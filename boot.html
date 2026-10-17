@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spooled</title>
+<style>
+  :root{--u:2vmin;--bg:#060708;--red:#ff2d3f;--txt:#f5f7fa;--txt3:#586170;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;background:var(--bg);color:var(--txt);overflow:hidden;
+    font-family:"Helvetica Neue","Segoe UI",Inter,system-ui,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;user-select:none;}
+  .wrap{height:100%;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:calc(var(--u)*2);text-align:center;padding:calc(var(--u)*4);}
+  .mark{display:flex;align-items:center;gap:calc(var(--u)*1.4);}
+  svg{width:calc(var(--u)*7);height:calc(var(--u)*7);}
+  .word{font-size:calc(var(--u)*7);font-weight:800;letter-spacing:.02em;line-height:.9;}
+  .word b{color:var(--red);font-weight:800;}
+  .spin{width:calc(var(--u)*3);height:calc(var(--u)*3);border-radius:50%;
+    border:calc(var(--u)*.35) solid rgba(255,255,255,.12);border-top-color:var(--red);
+    animation:s 900ms linear infinite;}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .msg{font-size:calc(var(--u)*2);color:var(--txt3);letter-spacing:.04em;max-width:calc(var(--u)*60);line-height:1.5;}
+  .slow{display:none;font-size:calc(var(--u)*1.7);color:var(--txt3);line-height:1.6;max-width:calc(var(--u)*64);}
+  .slow.on{display:block;}
+  .slow b{color:var(--txt);font-weight:700;}
+</style>
+<div class="wrap">
+  <div class="mark">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="15" fill="none" stroke="#ff2d3f" stroke-width="3"/>
+      <g fill="#ff2d3f">
+        <path d="M24 24 L24.5 10 C31 11 34 17 31 22 Z"/>
+        <path d="M24 24 L36 31 C32 37 25 36 23 30 Z"/>
+        <path d="M24 24 L11 29 C8 23 12 18 18 18.5 Z"/>
+      </g>
+      <circle cx="24" cy="24" r="3.6" fill="#060708"/>
+    </svg>
+    <div class="word">SPOOL<b>ED</b></div>
+  </div>
+  <div class="spin"></div>
+  <div class="msg" id="msg">Starting up…</div>
+  <div class="slow" id="slow">
+    This is taking longer than it should. Leave the ignition on — it will come
+    back on its own if it can.<br>
+    If it stays on this screen, the unit needs looking at:
+    quote <b>boot did not complete</b>.
+  </div>
+</div>
+<script>
+  setTimeout(function(){
+    var m = document.getElementById('msg');
+    if (m) m.textContent = 'Still starting…';
+    var s = document.getElementById('slow');
+    if (s) s.className = 'slow on';
+  }, 45000);
+</script>

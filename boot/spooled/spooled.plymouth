@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Spooled
+Description=Spooled boot splash - spinning turbo
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/spooled
+ScriptFile=/usr/share/plymouth/themes/spooled/spooled.script

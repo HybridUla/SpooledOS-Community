@@ -1,0 +1,32 @@
+Window.SetBackgroundTopColor(0.04, 0.05, 0.06);
+Window.SetBackgroundBottomColor(0.0, 0.0, 0.0);
+
+sw = Window.GetWidth();
+sh = Window.GetHeight();
+
+unit = sw;
+if (sh < sw) unit = sh;
+
+wheel_d = unit * 0.34;
+wheel.image = Image("spooled-wheel.png").Scale(wheel_d, wheel_d);
+
+cx = sw / 2;
+cy = sh / 2;
+
+wheel.sprite = Sprite();
+
+angle = 0;
+vel = 0.015;
+
+fun refresh () {
+    vel = vel + 0.0016;
+    if (vel > 0.55) vel = 0.55;
+    angle = angle + vel;
+
+    rot = wheel.image.Rotate(angle);
+    wheel.sprite.SetImage(rot);
+    wheel.sprite.SetX(cx - rot.GetWidth() / 2);
+    wheel.sprite.SetY(cy - rot.GetHeight() / 2);
+}
+
+Plymouth.SetRefreshFunction(refresh);

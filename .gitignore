@@ -1,0 +1,9 @@
+settings.json
+logs/
+logs_test/
+
+dtc_table.json
+
+__pycache__/
+*.py[cod]
+.DS_Store
